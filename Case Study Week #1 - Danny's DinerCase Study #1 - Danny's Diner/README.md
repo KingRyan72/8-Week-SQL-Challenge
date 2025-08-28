@@ -26,7 +26,7 @@ The queries for this analysis were written and executed using PostgreSQL on [DB 
 If you have any questions or would like to connect, please feel free to reach out to me on [LinkedIn](https://www.linkedin.com/in/edgar-mblanco/).
 
 **1. What is the total amount each customer spent at the restaurant?**
-
+This query calculates the cumulative spending for each customer by joining sales and menu data.
 ````sql
 SELECT 
   sales.customer_id, 
@@ -113,7 +113,7 @@ WHERE rank = 1
 GROUP BY customer_id, product_name;
 ````
 #### Steps:
-- Create a **Common Table Expression (CTE)** called ````ordered_sales```.
+- Create a **Common Table Expression (CTE)** called ````ordered_sales````.
 
 - Within the CTE, use the ````DENSE_RANK()```` window function. This function assigns a unique rank to each row within a partition without gaps, which is perfect for handling ties (e.g., two items ordered on the same first day). The data is partitioned by ````customer_id```` and ordered by ````order_date````.
 
